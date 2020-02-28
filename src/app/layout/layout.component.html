@@ -4,11 +4,11 @@
 		<div class="sidebar-logo">
 			<a [routerLink]="['/']">
 				<img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
-				<h1>HOME</h1>
+				<h1 class="home">HOME</h1>
 			</a>
 		</div>
-		<ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-			<li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
+		<ul nz-menu nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+			<li nz-submenu nzOpen nzTitle="ダッシュボード" nzIcon="dashboard">
 				<ul>
 					<li nz-menu-item nzMatchRouter>
 						<a routerLink="/home">HOME</a>
@@ -24,7 +24,7 @@
 			<li nz-submenu nzOpen nzTitle="Form" nzIcon="form">
 				<ul>
 					<li nz-menu-item nzMatchRouter>
-						<a>Basic Form</a>
+						<a>ToDo Form</a>
 					</li>
 				</ul>
 			</li>
@@ -36,6 +36,15 @@
 				<span class="header-trigger" (click)="isCollapsed = !isCollapsed">
 					<i class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></i>
 				</span>
+				<span class="user-icon" nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu">
+					<i class="user" nz-icon nzType='user'></i>
+				</span>
+				<nz-dropdown-menu #menu="nzDropdownMenu">
+					<ul nz-menu>
+						<li *ngIf="!isLogin" nz-menu-item>ログインする</li>
+						<li *ngIf="isLogin" nz-menu-item>ログアウトする</li>
+					</ul>
+				</nz-dropdown-menu>
 			</div>
 		</nz-header>
 		<nz-content>

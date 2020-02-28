@@ -1,11 +1,11 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { LayoutModule } from "./layout/layout.module";
 import { IconsProviderModule } from './icons-provider.module';
 import { NgZorroAntdModule, NZ_I18N, ja_JP } from 'ng-zorro-antd';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -18,7 +18,9 @@ registerLocaleData(ja);
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    NgZorroAntdModule,
     LayoutModule,
+    FlexLayoutModule,
     AppRoutingModule,
     IconsProviderModule,
     FormsModule,
