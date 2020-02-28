@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LayoutComponent } from './layout.component';
 import { RouterModule } from '@angular/router';
-import { NgZorroAntdModule } from 'ng-zorro-antd';
+import { NgZorroAntdModule, NzDropDownModule } from 'ng-zorro-antd';
 
 
 
@@ -13,6 +13,7 @@ import { NgZorroAntdModule } from 'ng-zorro-antd';
   imports: [
     CommonModule,
     NgZorroAntdModule,
+    NzDropDownModule,
     RouterModule
   ]
 })
