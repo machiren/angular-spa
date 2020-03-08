@@ -20,7 +20,7 @@ export class LayoutComponent implements OnInit {
     this.auth;
   }
 
-  onClickLoout() {
+  onClickLogout() {
     this.auth.logout();
   }
 

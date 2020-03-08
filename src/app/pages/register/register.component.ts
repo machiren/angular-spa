@@ -10,13 +10,6 @@ import { UserService } from '../../api/user.service';
 export class RegisterComponent implements OnInit {
   validateForm: FormGroup;
 
-  submitForm(): void {
-    for (const i in this.validateForm.controls) {
-      this.validateForm.controls[i].markAsDirty();
-      this.validateForm.controls[i].updateValueAndValidity();
-    }
-  }
-
   constructor(private fb: FormBuilder, private user: UserService) { }
 
   ngOnInit(): void {
@@ -28,6 +21,10 @@ export class RegisterComponent implements OnInit {
   }
 
   onClickSubmit() {
+    for (const i in this.validateForm.controls) {
+      this.validateForm.controls[i].markAsDirty();
+      this.validateForm.controls[i].updateValueAndValidity();
+    }
     if (this.validateForm.valid) this.user.post(this.validateForm.value);
   }
 }

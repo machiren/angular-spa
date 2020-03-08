@@ -1,5 +1,5 @@
 <nz-card nzTitle="ユーザー登録">
-	<form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+	<form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="onClickSubmit()">
 		<nz-form-item>
 			<nz-form-control nzErrorTip="名前を入力してください">
 				<nz-input-group nzPrefixIcon="user">
@@ -24,8 +24,7 @@
 						<a class="login-form-forgot" class="login-form-forgot">Forgot password</a>
 					</div>
 					<div class="submit-button">
-						<button (click)="onClickSubmit()" nz-button class="login-form-button"
-							[nzType]="'primary'">ログイン</button>
+						<button nz-button class="login-form-button" [nzType]="'primary'">ログイン</button>
 					</div>
 				</div>
 			</nz-form-control>
