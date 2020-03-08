@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UserService } from '../../api/user.service';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +17,7 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private user: UserService) { }
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
@@ -24,5 +25,9 @@ export class RegisterComponent implements OnInit {
       password: [null, [Validators.required]],
       remember: [true]
     });
+  }
+
+  onClickSubmit() {
+    if (this.validateForm.valid) this.user.post(this.validateForm.value);
   }
 }

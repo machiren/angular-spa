@@ -24,7 +24,8 @@
 						<a class="login-form-forgot" class="login-form-forgot">Forgot password</a>
 					</div>
 					<div class="submit-button">
-						<button nz-button class="login-form-button" [nzType]="'primary'">ログイン</button>
+						<button (click)="onClickSubmit()" nz-button class="login-form-button"
+							[nzType]="'primary'">ログイン</button>
 					</div>
 				</div>
 			</nz-form-control>

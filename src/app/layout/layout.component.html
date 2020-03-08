@@ -41,8 +41,8 @@
 				</span>
 				<nz-dropdown-menu #menu="nzDropdownMenu">
 					<ul nz-menu>
-						<li *ngIf="!isLogin" nz-menu-item>ログインする</li>
-						<li *ngIf="isLogin" nz-menu-item>ログアウトする</li>
+						<li (click)="onClickLogin" *ngIf="!isLogin" nz-menu-item>ログインする</li>
+						<li (click)="onClickLogout" *ngIf="isLogin" nz-menu-item>ログアウトする</li>
 					</ul>
 				</nz-dropdown-menu>
 			</div>
