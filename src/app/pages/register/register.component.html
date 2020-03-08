@@ -1,0 +1,33 @@
+<nz-card nzTitle="ユーザー登録">
+	<form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+		<nz-form-item>
+			<nz-form-control nzErrorTip="名前を入力してください">
+				<nz-input-group nzPrefixIcon="user">
+					<input type="text" nz-input formControlName="userName" placeholder="ユーザー名" />
+				</nz-input-group>
+			</nz-form-control>
+		</nz-form-item>
+		<nz-form-item>
+			<nz-form-control nzErrorTip="パスワードを入力してください">
+				<nz-input-group nzPrefixIcon="lock">
+					<input type="password" nz-input formControlName="password" placeholder="パスワード" />
+				</nz-input-group>
+			</nz-form-control>
+		</nz-form-item>
+		<nz-form-item>
+			<nz-form-control>
+				<div class="description-wrapper">
+					<div class="option">
+						<label nz-checkbox formControlName="remember">
+							<span>Remember me</span>
+						</label>
+						<a class="login-form-forgot" class="login-form-forgot">Forgot password</a>
+					</div>
+					<div class="submit-button">
+						<button nz-button class="login-form-button" [nzType]="'primary'">ログイン</button>
+					</div>
+				</div>
+			</nz-form-control>
+		</nz-form-item>
+	</form>
+</nz-card>
