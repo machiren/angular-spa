@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-layout',
@@ -9,9 +10,18 @@ export class LayoutComponent implements OnInit {
 
   isLogin: boolean = false;
   isCollapsed: boolean = false;
-  constructor() { }
+
+  constructor(private auth: AuthService) { }
 
   ngOnInit() {
+  }
+
+  onClickLogin() {
+    this.auth;
+  }
+
+  onClickLoout() {
+    this.auth.logout();
   }
 
 }
