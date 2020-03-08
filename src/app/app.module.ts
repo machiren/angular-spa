@@ -1,5 +1,5 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { NgModule, ErrorHandler } from "@angular/core";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { LayoutModule } from "./layout/layout.module";
@@ -10,6 +10,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
+import { AppErrorHandlerService } from './app.error.handler';
+import { AuthService } from './auth/auth.service';
+import { JwtModule } from '@auth0/angular-jwt';
 import ja from '@angular/common/locales/ja';
 
 registerLocaleData(ja);
@@ -23,10 +26,12 @@ registerLocaleData(ja);
     FlexLayoutModule,
     AppRoutingModule,
     IconsProviderModule,
-    FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule],
-  providers: [{ provide: NZ_I18N, useValue: ja_JP }],
+    BrowserAnimationsModule,
+    JwtModule.forRoot({ config: { tokenGetter: AuthService.tokenGetter } }),],
+  providers: [
+    { provide: NZ_I18N, useValue: ja_JP },
+    { provide: ErrorHandler, useClass: AppErrorHandlerService }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
