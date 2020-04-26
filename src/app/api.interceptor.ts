@@ -15,12 +15,13 @@ export class ApiInterceptor implements HttpInterceptor {
   constructor(private auth: AuthService) { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    request.clone({ url: `${environment.apiRoot}/${request.url}` });
-    if (this.auth.accessToken) {
-      request.clone({
-        headers: request.headers.set('Authorization', `Bearer ${this.auth.accessToken}`),
+    const token = this.auth.accessToken;
+    let req = request.clone({ url: `${environment.apiRoot}/${request.url}` });
+    if (token) {
+      req = req.clone({
+        headers: req.headers.set('Authorization', `Bearer ${token}`),
       });
     }
-    return next.handle(request);
+    return next.handle(req);
   }
 }

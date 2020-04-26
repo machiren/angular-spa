@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { User } from '../model/user';
 
 @Injectable({
   providedIn: 'root'
@@ -9,27 +10,23 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   get() {
-    return this.http.get<any>('users');
+    return this.http.get<User[]>('users');
   }
 
   getUser(id: string) {
-    return this.http.get<any>(`users/${id}`);
+    return this.http.get<User>(`users/${id}`);
   }
 
-  post(user: any) {
-    return this.http.post<any>('user', user);
+  post(user: User) {
+    return this.http.post<User>('users', user);
   }
 
-  put(id: string, user: any) {
-    return this.http.post<any>(`user/${id}`, user);
+  put(id: string, user: User) {
+    return this.http.post<User>(`users/${id}`, user);
   }
 
   destroy(id: string) {
-    return this.http.delete<any>(`user/${id}`);
-  }
-
-  delete() {
-    return this.http.delete<any>(`user`);
+    return this.http.delete<User>(`users/${id}`);
   }
 
 }

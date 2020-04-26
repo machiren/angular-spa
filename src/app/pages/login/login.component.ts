@@ -1,32 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { UserService } from '../../api/user.service';
+import { AuthService } from '../../auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.less']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.less']
 })
-export class RegisterComponent implements OnInit {
+export class LoginComponent implements OnInit {
   validateForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private user: UserService) { }
+  constructor(private readonly fb: FormBuilder, private readonly auth: AuthService, private readonly router: Router) { }
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
       name: [null, [Validators.required]],
       password: [null, [Validators.required]],
-      remember: [true]
     });
   }
 
-  async onClickSubmit() {
+  onClickSubmit() {
     for (const i in this.validateForm.controls) {
       this.validateForm.controls[i].markAsDirty();
       this.validateForm.controls[i].updateValueAndValidity();
     }
     if (this.validateForm.valid) {
-      return await this.user.post(this.validateForm.value).toPromise();
+      const token = this.auth.login(this.validateForm.value);
+      if (!!token) this.router.navigateByUrl('home');
     }
   }
 }
