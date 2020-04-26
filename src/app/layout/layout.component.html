@@ -24,7 +24,12 @@
 			<li nz-submenu nzOpen nzTitle="Form" nzIcon="form">
 				<ul>
 					<li nz-menu-item nzMatchRouter>
-						<a routerLink="/register">ユーザー登録</a>
+						<a routerLink="/register">register</a>
+					</li>
+				</ul>
+				<ul>
+					<li nz-menu-item nzMatchRouter>
+						<a routerLink="/login">login</a>
 					</li>
 				</ul>
 			</li>
@@ -41,8 +46,9 @@
 				</span>
 				<nz-dropdown-menu #menu="nzDropdownMenu">
 					<ul nz-menu>
-						<li (click)="onClickLogin" *ngIf="!isLogin" nz-menu-item>ログインする</li>
-						<li (click)="onClickLogout" *ngIf="isLogin" nz-menu-item>ログアウトする</li>
+						<li routerLink="/login" routerLinkActive="router-link-active" (click)="onClickLogin" *ngIf="!isLogin"
+							nz-menu-item>ログインする</li>
+						<li routerLink="/register" (click)="onClickLogout" *ngIf="isLogin" nz-menu-item>ログアウトする</li>
 					</ul>
 				</nz-dropdown-menu>
 			</div>

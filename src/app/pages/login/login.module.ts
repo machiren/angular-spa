@@ -1,26 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { RegisterComponent } from './register.component';
+import { LoginComponent } from './login.component';
 import { RouterModule, Routes } from '@angular/router';
-import { NzFormModule, NzInputModule, NzCardModule, NzButtonModule, NzCheckboxModule } from 'ng-zorro-antd';
-
+import { NzCardModule, NzInputModule, NzCheckboxModule, NzButtonModule, NzFormModule } from 'ng-zorro-antd';
 
 const routes: Routes = [
-  { path: '', component: RegisterComponent },
+  { path: '', component: LoginComponent },
 ];
 
 @NgModule({
-  declarations: [RegisterComponent],
+  declarations: [LoginComponent],
   imports: [
     RouterModule.forChild(routes),
-    CommonModule,
     ReactiveFormsModule,
+    CommonModule,
     NzFormModule,
-    NzInputModule,
     NzCardModule,
+    NzInputModule,
+    NzCheckboxModule,
     NzButtonModule,
-    NzCheckboxModule
   ]
 })
-export class RegisterModule { }
+export class LoginModule { }
